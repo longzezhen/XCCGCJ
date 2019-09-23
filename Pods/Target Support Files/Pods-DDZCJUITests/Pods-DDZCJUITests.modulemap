@@ -1,0 +1,6 @@
+framework module Pods_DDZCJUITests {
+  umbrella header "Pods-DDZCJUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

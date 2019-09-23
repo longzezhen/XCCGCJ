@@ -1,0 +1,102 @@
+//
+//  PrefixHeader.pch
+//  DDZCJ
+//
+//  Created by df on 2019/8/30.
+//  Copyright © 2019 df. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import "AppDelegate.h"
+#import "DDZColorHelper.h"
+#import "DDZKeyHelper.h"
+#import <Masonry.h>
+#import <YYModel.h>
+#import "MBProgressHUD+PD.h"
+#import "MusicPlayObj.h"
+#import "FixButton.h"
+
+#endif
+
+//打印方法
+#ifdef DEBUG
+#define NSLog(fmt, ...)  NSLog((@"%s %d" fmt),__PRETTY_FUNCTION__,__LINE__,##__VA_ARGS__)
+#else
+# define NSLog(...);
+#endif
+
+#define DDImageName(imageName) [UIImage imageNamed:imageName]
+
+//CGrect
+#define DDMaxX(id) CGRectGetMaxX((id).frame)
+#define DDMinX(id) CGRectGetMinX((id).frame)
+#define DDMidX(id) CGRectGetMidX((id).frame)
+#define DDMidY(id) CGRectGetMidY((id).frame)
+#define DDMaxY(id) CGRectGetMaxY((id).frame)
+#define DDMinY(id) CGRectGetMinY((id).frame)
+#define DDWidth(id) CGRectGetWidth((id).frame)
+#define DDHeight(id) CGRectGetHeight((id).frame)
+#define DD_X(id) (id).frame.origin.x
+#define DD_Y(id) (id).frame.origin.y
+
+//特殊字体
+#define PingFangBlodFont(id) [UIFont fontWithName:@"PingFangSC-Semibold" size:id]
+#define PingFangFCHeavyFont(id) [UIFont fontWithName:@"PingFang-SC-Heavy" size:id]
+#define FZY4FWGB(id)   [UIFont fontWithName:@"FZY4FW--GB1-0" size:id]
+#define FZY3FWGB(id)   [UIFont fontWithName:@"FZY3FW--GB1-0" size:id]
+
+#define Discount_Money @"5"//每盘扣5
+#define First_Money @"20"//初始送20
+#define Chong_Money @"30"//充30
+#define Song_Money @"15"//每天送15
+
+//屏幕宽高
+#define KScreenWidth [UIScreen mainScreen].bounds.size.width
+#define KScreenHeight [UIScreen mainScreen].bounds.size.height
+
+//是否是iPad
+#define IS_IPAD  ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+//圆角
+#define LayerMakeCorner(view,radius) {(view).layer.cornerRadius=(radius);(view).layer.masksToBounds=YES;}
+
+#define Auto_Height(a)      (((KScreenHeight)/(667))*(a))
+#define Auto_Width(a)       (((KScreenWidth)/(375))*(a))
+
+#define IS_IPhoneX_All (CGSizeEqualToSize(CGSizeMake(375.f, 812.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(812.f, 375.f), [UIScreen mainScreen].bounds.size)  || CGSizeEqualToSize(CGSizeMake(414.f, 896.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(896.f, 414.f), [UIScreen mainScreen].bounds.size))
+
+//导航栏高度
+#define DDNavigation_Height (IS_IPhoneX_All ? 88 : 64)
+#define DDNavigation_Top_StatusHeight (IS_IPhoneX_All ? 44 : 20)
+#define DDNavigation_TopHeight (IS_IPhoneX_All ? 24.f:0.f)
+//标签栏高度
+#define DDTabBar_Height 49.f
+#define DDTabBar_TopHeight (IS_IPhoneX_All ? 34 : 0)
+
+#define getRectNavAndStatusHight  self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height
+
+#define DDWeakSelf __weak typeof(self) weakSelf = self;
+
+//存储
+#define DDUserDefaults [NSUserDefaults standardUserDefaults]
+//添加NSUserDefaults缓存数据
+#define DDSET_CACHE(value,key) [DDUserDefaults setValue:(value) forKey:(key)];\
+[DDUserDefaults synchronize];
+//获取NSUserDefaults缓存数据
+#define DDGET_CACHE(string) [DDUserDefaults objectForKey:(string)]
+//移除NSUserDefaults缓存数据
+#define DDREMOVE_CACHE(string) [DDUserDefaults removeObjectForKey:(string)];\
+[DDUserDefaults synchronize];
+
+//主视图
+#define LYWindow [UIApplication sharedApplication].keyWindow
+
+//通知中心
+#define DDZN_C [NSNotificationCenter defaultCenter]
+
+#define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
+
+#endif /* PrefixHeader_pch */
